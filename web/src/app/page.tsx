@@ -1,12 +1,5 @@
-import { Button } from "@/components/Button";
-
 export default function Home() {
-  return (
-    <>
-      <h1>go codee</h1>
-      <Button title="Felipe"/>
-      <Button title="Felipe II"/>
-      <Button title="Felipe III"/>
-    </>
-  );
+  return <div className="h-screen bg-zinc-950 text-zinc-50 p-6">
+    <h1 className="text-4xl font-bold">Sua cápsula do tempo</h1>
+    </div>
 }
