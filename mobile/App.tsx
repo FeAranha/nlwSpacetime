@@ -10,6 +10,10 @@ import {
 import { BaiJamjuree_700Bold } from '@expo-google-fonts/bai-jamjuree'
 
 import blurBg from './src/assets/bg-blur.png'
+import Stripes from './src/assets/stripes.svg'
+import { styled } from 'nativewind'
+
+const StyledStripes = styled(Stripes)
 
 export default function App() {
   const [hasLoadedFonts] = useFonts({
@@ -28,6 +32,8 @@ export default function App() {
       className="relative flex-1 items-center bg-gray-900"
       imageStyle={{ position: 'absolute' }}
     >
+      <StyledStripes className="absolute left-2" />
+
       <StatusBar style="light" translucent />
     </ImageBackground>
   )
