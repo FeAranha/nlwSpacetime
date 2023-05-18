@@ -13,6 +13,15 @@ import blurBg from './src/assets/bg-blur.png'
 import Stripes from './src/assets/stripes.svg'
 import NLWLogo from './src/assets/nlw-spacetime-logo.svg'
 import { styled } from 'nativewind'
+import { makeRedirectUri, useAuthRequest } from 'expo-auth-session'
+import { useEffect } from 'react'
+
+const discovery = {
+  authorizationEndpoint: 'https://github.com/login/oauth/authorize',
+  tokenEndpoint: 'https://github.com/login/oauth/access_token',
+  revocationEndpoint:
+    'https://github.com/settings/connections/applications/ef930e68fde6dca670f7',
+}
 
 const StyledStripes = styled(Stripes)
 
@@ -22,6 +31,25 @@ export default function App() {
     Roboto_700Bold,
     BaiJamjuree_700Bold,
   })
+
+  const [request, response, signInWithGithub] = useAuthRequest(
+    {
+      clientId: 'ef930e68fde6dca670f7',
+      scopes: ['identity'],
+      redirectUri: makeRedirectUri({
+        scheme: 'nlwspacetime',
+      }),
+    },
+    discovery,
+  )
+
+  useEffect(() => {
+    if (response?.type === 'success') {
+      const { code } = response.params
+
+      console.log(code)
+    }
+  }, [response])
 
   if (!hasLoadedFonts) {
     return null
@@ -51,6 +79,7 @@ export default function App() {
         <TouchableOpacity
           activeOpacity={0.7}
           className="rounded-full bg-green-500 px-5 py-2"
+          onPress={() => signInWithGithub()}
         >
           <Text className="font-alt text-sm uppercase text-black">
             Cadastrar lembrança
