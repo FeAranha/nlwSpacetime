@@ -63,8 +63,9 @@ module.exports = {
       },
       
       blur: {
-        full: '194px'
+        full: '194px',
       },
     },
   },
+  plugins: [require('@tailwindcss/forms')],
 }
