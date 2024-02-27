@@ -12,7 +12,6 @@ export function NewMemoryForm() {
 
   async function handleCreateMemory(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
-    //TODO target VS currentTarget?
     const formData = new FormData(event.currentTarget)
 
     const fileToUpload = formData.get('coverUrl')

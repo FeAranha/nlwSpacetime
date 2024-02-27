@@ -37,6 +37,7 @@ export default function NewMemory() {
         setPreview(result.assets[0].uri)
       }
     } catch (err) {
+      console.log(err)
       // deu erro mas eu não tratei
     }
   }
@@ -62,8 +63,6 @@ export default function NewMemory() {
       })
 
       coverUrl = uploadResponse.data.fileUrl
-
-      console.log(coverUrl)
     }
 
     await api.post(
