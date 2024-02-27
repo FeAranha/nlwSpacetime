@@ -29,7 +29,6 @@ export function MediaPicker() {
       />
 
 {preview && (
-        // eslint-disable-next-line
         <img
           src={preview}
           alt=""

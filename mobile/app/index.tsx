@@ -29,24 +29,30 @@ export default function App() {
     discovery,
   )
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   async function handleGithubOAuthCode(code: string) {
     const response = await api.post('/register', {
       code,
     })
     const { token } = response.data
-
     await SecureStore.setItemAsync('token', token)
 
     router.push('/memories')
   }
 
   useEffect(() => {
+    // exibe a url em caso de erro, alterar o OAuth spacetime-dev-mobile
+    // console.log(
+    //   makeRedirectUri({
+    //     scheme: 'nlwspacetime',
+    //   }),
+    // )
     if (response?.type === 'success') {
       const { code } = response.params
 
       handleGithubOAuthCode(code)
     }
-  }, [response])
+  }, [handleGithubOAuthCode, response])
 
   return (
     <View className="flex-1 items-center px-8 py-10">

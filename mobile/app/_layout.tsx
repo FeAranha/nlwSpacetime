@@ -28,6 +28,7 @@ export default function Layout() {
 
   useEffect(() => {
     SecureStore.getItemAsync('token').then((token) => {
+      console.log(!!token) // usuário autenticado ou não
       setIsUserAuthenticate(!!token)
     })
   }, [])
@@ -53,6 +54,7 @@ export default function Layout() {
         }}
       >
         <Stack.Screen name="index" redirect={isUserAuthenticated} />
+        {/* Em desenvolvimento manter a linha abaixo descomentada */}
         <Stack.Screen name="new" />
         <Stack.Screen name="memories" />
       </Stack>
