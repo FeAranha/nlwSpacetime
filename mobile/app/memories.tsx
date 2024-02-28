@@ -23,6 +23,7 @@ export default function Memory() {
   const { bottom, top } = useSafeAreaInsets()
   const router = useRouter()
   const [memories, setMemories] = useState<MemoryProps[]>([])
+
   async function signOut() {
     await SecureStore.deleteItemAsync('token')
 
